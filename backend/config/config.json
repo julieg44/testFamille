@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "julie",
+    "password": "marty",
+    "database": "famille",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "julie",
+    "password": "marty",
+    "database": "famille_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "julie",
+    "password": "marty",
+    "database": "famille_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
