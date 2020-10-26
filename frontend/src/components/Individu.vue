@@ -1,16 +1,27 @@
+
+
 <template>
     <div class="contener">
         <h1>{{ nom }}</h1>
         <p>Date de naissance : {{ date_naissance }} </p>
         <p>Sexe : {{ espece }}</p>
         <p>Commentaires : {{ commentaires }}</p>
+        <DeleteBtn @click="SupMartyNestor"/>
     </div> 
 </template>
 
 <script>
 
+
+
+import DeleteBtn from '@/components/DeleteBtn.vue'
+import { mapActions } from 'vuex';
+
 export default {
     name:'Individu',
+    components: { 
+        DeleteBtn 
+        },
         props: {
         nom: {
             type: String,
@@ -25,6 +36,9 @@ export default {
             type: String,
         }
         },
+        methods: {
+            ...mapActions(["SupMartyNestor"])
+        }
 }
 </script>
 

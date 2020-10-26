@@ -1,13 +1,32 @@
-const individu = require('../models/individu');
+const Individu = require('../models/Individu');
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize ('famille', 'julie','marty',{
+    host:'localhost',
+    dialect: 'mysql'
+  });
+
+
+
 
 exports.getAll = (req,res,next) => {
-    individu.findAll()
-        .then(individus => res.status(200).json(individus))
-        .catch(error => res.status(400).json({error}));
-        console.log(res.json(individus));
+sequelize.query("SELECT * from individu")
+    .then(results => {
+    //   console.log(results);
+    res.json(results);
+    })
 };
 
+exports.createSb = (req, res, next) => {
+    sequelize.query("INSERT into individu (espece, date_naissance, nom, commentaires) VALUES ('chien','2020-04-16','Marty','whouaf'), ('chat','2015-06-03','Nestor','miaou')")
+    .then(results => {
+        res.json(results);
+    })
+};
 
-
-
-
+exports.sup = (req, res, next) => {
+    sequelize.query("DELETE FROM individu WHERE nom = 'Marty' OR nom = 'Nestor'")
+    .then (results => {
+        res.json(results);
+    })
+};

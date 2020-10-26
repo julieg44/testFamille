@@ -8,16 +8,16 @@ const app = express();
 const sequelize = new Sequelize ('famille', 'julie','marty',{
   host:'localhost',
   dialect: 'mysql'
-})
+});
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established successfully.');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
 
 
 
@@ -30,10 +30,10 @@ app.use((req, res, next) => {
 
 
 
-app.use((req, res, next) => {
-   res.json({ message: 'Votre requête a bien été reçue !' }); 
-   next();
-});
+// app.use((req, res, next) => {
+//    res.json({ message: 'Votre requête a bien été reçue !' }); 
+//    next();
+// });
 
 
 

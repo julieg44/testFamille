@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('individu', {
+  return sequelize.define('Individu', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER.UNSIGNED,
