@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <!-- <AddBtn/> -->
   <div class="home">
     <Individu
     v-for="item in identite"
@@ -9,17 +11,19 @@
 				:key="item.nom"
         />
   </div>
+  </div>
 </template>
 
 <script>
 
 import Individu from '@/components/Individu.vue'
+// import AddBtn from '@/components/AddBtn.vue'
 import { mapState } from "vuex"
 
 export default {
   name: 'Home',
   components: {
-    Individu
+    Individu, 
   },
   computed: {
     ...mapState ({

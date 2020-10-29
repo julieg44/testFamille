@@ -10,7 +10,7 @@ const sequelize = new Sequelize ('famille', 'julie','marty',{
 
 
 exports.getAll = (req,res,next) => {
-sequelize.query("SELECT * from individu")
+sequelize.query("SELECT * from individu", {type: sequelize.QueryTypes.SELECT})
     .then(results => {
     //   console.log(results);
     res.json(results);

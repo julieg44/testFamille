@@ -37,7 +37,8 @@ export default {
         }
         },
         methods: {
-            ...mapActions(["SupMartyNestor"])
+            ...mapActions(["SupMartyNestor","ajouteGobin"])
+
         }
 }
 </script>

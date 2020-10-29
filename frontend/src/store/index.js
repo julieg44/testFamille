@@ -23,7 +23,7 @@ axios.get(url)
   .then(function (response) {
     // handle success
     console.log(response);
-    let data = response.data[0];
+    let data = response.data;
     console.log(data);
     for (let i=0 ; i < data.length ; i++){
       let gobinModele = new Gobin(data[i].nom, data[i].date_naissance, data[i].espece, data[i].commentaires, data[i]._id);
@@ -63,7 +63,11 @@ export default new Vuex.Store({
         }
         console.log(tabloGobin);
       })
-    }
+    },
+    OpenFormulaire(){
+      let AjoutBtn = document.querySelector('#ajout, a')
+      AjoutBtn.setAttribute('href', '../views/formulaire.vue');
+    },
   },
   modules: {
   }
