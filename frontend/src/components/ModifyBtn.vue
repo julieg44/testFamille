@@ -1,20 +1,19 @@
 <template>
-  <button v-on="$listeners">
-    <slot>Ajouter</slot>
+  <button class="modifyBtn" v-on="$listeners">
+    <slot>Modifier</slot>
   </button>
 </template>
 
 <script>
-
 export default {
-  name: 'AddBtn',
+  name: 'ModifyBtn'
 }
 </script>
 
 <style lang="scss">
-    button{
+    button.modifyBtn{
         width: 30%;
-        background-color: #940659;
+        background-color: #000000;
         color:#fff;
         margin-bottom: 10%;
     }

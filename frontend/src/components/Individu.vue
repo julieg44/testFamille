@@ -6,7 +6,10 @@
         <p>Date de naissance : {{ date_naissance }} </p>
         <p>Sexe : {{ espece }}</p>
         <p>Commentaires : {{ commentaires }}</p>
-        <DeleteBtn @click="SupMartyNestor"/>
+        <DeleteBtn @click="SupGobin(_id)"/>
+        <router-link to="/:id">
+            <ModifyBtn/>
+        </router-link>
     </div> 
 </template>
 
@@ -15,14 +18,19 @@
 
 
 import DeleteBtn from '@/components/DeleteBtn.vue'
+import ModifyBtn from '@/components/ModifyBtn'
 import { mapActions } from 'vuex';
 
 export default {
     name:'Individu',
     components: { 
-        DeleteBtn 
-        },
-        props: {
+        DeleteBtn,
+        ModifyBtn
+    },
+    props: {
+        _id:{
+            type: Number,
+        },    
         nom: {
             type: String,
         },
@@ -35,11 +43,11 @@ export default {
         commentaires: {
             type: String,
         }
-        },
-        methods: {
-            ...mapActions(["SupMartyNestor","ajouteGobin"])
+    },
+    methods: {
+        ...mapActions(["SupGobin"])
 
-        }
+    }
 }
 </script>
 

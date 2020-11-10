@@ -2,6 +2,7 @@ const express = require('./node_modules/express');
 const mysql = require('mysql2')
 const Sequelize = require ('sequelize')
 const individuRoutes = require('./routes/individu');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.use((req, res, next) => {
 //    next();
 // });
 
-
+app.use(bodyParser.json());
 
 app.use ('/api/individu', individuRoutes) ;
 
