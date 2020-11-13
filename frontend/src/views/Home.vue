@@ -21,7 +21,6 @@
 import Individu from '@/components/Individu.vue'
 import formulaire from '@/components/formulaire.vue'
 import { mapState } from "vuex"
-import { mapActions } from "vuex"
 
 export default {
   name: 'Home',
@@ -37,10 +36,6 @@ export default {
   created(){
     this.$store.dispatch('loadIndividu',{self:this})
   },
-
-  methods: {
-  ...mapActions(["AddGobin"]),
-  }
 }
 </script>
 

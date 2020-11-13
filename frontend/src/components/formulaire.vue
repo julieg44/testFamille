@@ -1,6 +1,6 @@
 <template>
     <form>
-        <h1 class='titre-formulaire'>THE greatest dude will born soon : </h1>
+        <h1 class='titre-formulaire'>A Gobin will born soon : </h1>
         <div><label>espece</label><input id="espece" v-model="espece"></div>
         <div><label>date_naissance</label><input id="date_naissance" v-model="date_naissance"></div>
         <div><label>Nom</label><input id="nom" v-model="nom"></div>

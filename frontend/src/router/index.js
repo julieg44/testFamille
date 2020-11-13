@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Modifier from '../views/Modifier.vue'
+import ModifierPage from '../views/ModifierPage.vue'
 
 Vue.use(VueRouter)
 
@@ -28,10 +28,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Ajout.vue')
   },
   {
-    path:'/:id',
-    name: 'Modifier',
+    // path:'individu/:id/modifier',
+    path:'/individu/:id/modifier',
+    name: 'ModifierPage',
     // component: () => import(/* webpackChunkName: "about" */ '../views/Modifier.vue')
-    component: Modifier
+    component: ModifierPage
   }
 ]
 

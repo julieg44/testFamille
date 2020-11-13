@@ -7,7 +7,7 @@
         <p>Sexe : {{ espece }}</p>
         <p>Commentaires : {{ commentaires }}</p>
         <DeleteBtn @click="SupGobin(_id)"/>
-        <router-link to="/:id">
+        <router-link :to="{name:'ModifierPage',params:{id:_id}}">
             <ModifyBtn/>
         </router-link>
     </div> 
@@ -42,13 +42,18 @@ export default {
         },
         commentaires: {
             type: String,
-        }
+        },
     },
     methods: {
-        ...mapActions(["SupGobin"])
-
-    }
+        ...mapActions(["SupGobin", "GoModifyGobin"])
+    },
+    // computed:{
+    //     editIndividuLink(){
+    //         return this.$route.path + 'individu/' + this._id + '/modifier'
+    //     }, 
+    // }    
 }
+
 </script>
 
 

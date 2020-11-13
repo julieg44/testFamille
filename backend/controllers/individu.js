@@ -26,6 +26,14 @@ exports.sup = (req, res, next) => {
         .catch(error => res.status(400).json({message: 'foiré'}));
 };
 
+exports.modify = (req, res, next) => {
+    console.log(req.params.id)
+    console.log(req.body)
+    Models.Individu.update({ ...req.body },{ where: { id: req.params.id } })
+      .then(() => res.status(200).json({ message: 'Gobin modifié !'}))
+      .catch(error => res.status(400).json({ error }));
+  };
+
 exports.createSb = (req, res, next) => {
     // let gobinPersonne = JSON.parse(req.body);
     let gobinPersonne = req.body ;
@@ -54,10 +62,6 @@ exports.createSb = (req, res, next) => {
         data: [],
         error: error
     }));
-}
-
-exports.modify = (req, res, next) => {
-
 }
 
 exports.getOne = (req, res, next) => {
