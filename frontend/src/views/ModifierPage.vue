@@ -18,7 +18,7 @@
           <div class='ancien'>{{ Oneidentite[0].commentaires }} => </div>
           <div><label>Commentaires</label><input id="commentaires" v-model="NewCommentaires"></div>
         </div>
-        <ModifyValid @click.prevent="submit()"/>
+          <ModifyValid @click="submit()"/>
     </form>
   </div>  
 </template>
@@ -36,7 +36,7 @@ export default {
   },
 
   data(){
-      return {NewEspece:"", NewDate_naissance:"", NewNom:"", NewCommentaires:"", }
+      return {NewEspece:'', NewDate_naissance:'', NewNom:'', NewCommentaires:'', }
   },
 
   computed: {

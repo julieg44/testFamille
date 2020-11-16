@@ -1,7 +1,9 @@
 <template>
+<router-link to="/">
   <button v-on="$listeners">
     <slot>Modifier</slot>
   </button>
+</router-link>  
 </template>
 
 <script>

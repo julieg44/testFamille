@@ -76,18 +76,34 @@ export default new Vuex.Store({
     },
 
     ModifyGobin(context, payload){
-      let NbrDeGobin = context.state.identite.value
-      console.log(NbrDeGobin)
-      console.log(payload.id)
-      // if (payload.nom === null){
-      //   payload.nom === state.identite.nom
-      // }
+
+      console.log(payload)
+      console.log(context.state)
+
+      //// modification d'une seule donnée
+      for (let i = 0; i < context.state.identite.length; i++){
+        if (context.state.identite[i]._id === payload.id){
+          console.log(context.state.identite[i])
+          if (payload.nom === ""){
+            payload.nom = context.state.identite[i].nom
+            }
+          if (payload.espece === ""){
+            payload.espece = context.state.identite[i].espece
+            } 
+          if (payload.date_naissance === ""){
+            payload.date_naissance = context.state.identite[i].date_naissance
+            } 
+          if (payload.commentaires === ""){
+            payload.commentaires = context.state.identite[i].commentaires
+            }      
+        }
+      }
+
       let data = { nom:payload.nom, date_naissance:payload.date_naissance, espece:payload.espece, commentaires:payload.commentaires, id:payload.id };
       console.log(data)
       axios.put('http://localhost:3000/api/individu/'+ payload.id, data )
       .then(function (response) {
         console.log(response)
-        console.log(data);
         let NewGobin = new Gobin (data.nom, data.date_naissance, data.espece, data.commentaires, data.id);
           for (let i=0; i<context.state.identite.length;i++){
             if (context.state.identite[i].id === payload.id)
