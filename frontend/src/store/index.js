@@ -37,6 +37,7 @@ export default new Vuex.Store({
     },
 
     ModifIdentite(state, payload){
+      console.log(state.identite)
       console.log(payload)
       state.identite.push(payload);
     },
@@ -67,7 +68,7 @@ export default new Vuex.Store({
       let data = { nom:payload.nom, date_naissance:payload.date_naissance, espece:payload.espece, commentaires:payload.commentaires };
       axios.post(url, data)
         .then(function (response) {
-          console.log(response.data.data);
+          console.log(response.data);
           let Newdata = response.data.data;
           let NewGobin = new Gobin (Newdata.nom, Newdata.date_naissance, Newdata.espece, Newdata.commentaires, Newdata.id);
             context.commit('AddIdentite', NewGobin)
@@ -75,50 +76,39 @@ export default new Vuex.Store({
     },
 
     ModifyGobin(context, payload){
+      let NbrDeGobin = context.state.identite.value
+      console.log(NbrDeGobin)
       console.log(payload.id)
+      // if (payload.nom === null){
+      //   payload.nom === state.identite.nom
+      // }
       let data = { nom:payload.nom, date_naissance:payload.date_naissance, espece:payload.espece, commentaires:payload.commentaires, id:payload.id };
       console.log(data)
       axios.put('http://localhost:3000/api/individu/'+ payload.id, data )
       .then(function (response) {
-        console.log(response.data.data);
-        let Newdata = response.data.data;
-        let NewGobin = new Gobin (Newdata.nom, Newdata.date_naissance, Newdata.espece, Newdata.commentaires, Newdata.id);
-          context.commit('AddIdentite', NewGobin)
+        console.log(response)
+        console.log(data);
+        let NewGobin = new Gobin (data.nom, data.date_naissance, data.espece, data.commentaires, data.id);
+          for (let i=0; i<context.state.identite.length;i++){
+            if (context.state.identite[i].id === payload.id)
+            context.commit('ModifIdentite', NewGobin)
+          }
         })
     },
-
-    // GoModifyGobin(context, payload){
-    //   function clearArray(){
-    //     return context.state.identite = [];
-    //   }
-    //   console.log(payload)
-    //   console.log(context.state.identite)
-    //   for (let i =0; i < context.state.identite.length; i++){
-    //     if (context.state.identite[i]._id === payload){
-    //       let id = context.state.identite[i]._id
-
-    //       clearArray();
-    //       axios.get('http://localhost:3000/api/individu/'+ id )
-    //       .then(function (response){
-    //         let data = response.data
-    //           let gobinModele = new Gobin(data.nom, data.date_naissance, data.espece, data.commentaires, data.id);
-    //           context.commit('ModifIdentite', gobinModele)
-    //           console.log(gobinModele)
-    //       })
-    //     }
-    //   }
-    // },
 
     loadIndividu(context){
       // Affichage des gobins
       axios.get(url)
         .then(function (response) {
           // handle success
-          let data = response.data;  
-          for (let i=0 ; i < data.length ; i++){
-            let gobinModele = new Gobin(data[i].nom, data[i].date_naissance, data[i].espece, data[i].commentaires, data[i].id);
-            context.commit('AffIdentite', gobinModele)
-          } 
+          let data = response.data; 
+          if(context.state.identite.length === 0){
+            for (let i=0 ; i < data.length ; i++){
+              let gobinModele = new Gobin(data[i].nom, data[i].date_naissance, data[i].espece, data[i].commentaires, data[i].id);
+              context.commit('AffIdentite', gobinModele)
+            } 
+          }
+
         })
         .catch(function (error) {
           // handle error
@@ -130,6 +120,9 @@ export default new Vuex.Store({
     },
 
     loadOneIndividu(context, payload){
+          console.log(context);
+          context.state.Oneidentite = [];
+          console.log(context);
           axios.get('http://localhost:3000/api/individu/'+ payload.id )
           .then(function (response){
             console.log(response.data);

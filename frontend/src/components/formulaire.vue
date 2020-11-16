@@ -24,10 +24,10 @@ export default {
   methods:{
       ...mapActions(["AddGobin"]),
       submit(){
-        return {espece:this.espece, 
-                nom:this.nom, 
-                date_naissance:this.date_naissance,
-                commentaires:this.commentaires},
+        // return {espece:this.espece, 
+        //         nom:this.nom, 
+        //         date_naissance:this.date_naissance,
+        //         commentaires:this.commentaires},
 
         this.$store.dispatch('AddGobin',{espece:this.espece, 
         nom:this.nom, 

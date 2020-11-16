@@ -13,7 +13,6 @@ const sequelize = new Sequelize ('famille', 'julie','marty',{
 exports.getAll = (req,res,next) => {
     Models.Individu.findAll()
         .then(results => {
-        //   console.log(results);
         res.json(results);
         })
     };
@@ -27,10 +26,11 @@ exports.sup = (req, res, next) => {
 };
 
 exports.modify = (req, res, next) => {
-    console.log(req.params.id)
-    console.log(req.body)
     Models.Individu.update({ ...req.body },{ where: { id: req.params.id } })
-      .then(() => res.status(200).json({ message: 'Gobin modifié !'}))
+      .then (Individu => res.status (200).json({
+          data: Individu,
+          message: 'Gobin modifié !'
+        }))
       .catch(error => res.status(400).json({ error }));
   };
 

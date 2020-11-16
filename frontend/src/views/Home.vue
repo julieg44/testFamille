@@ -34,7 +34,7 @@ export default {
     })
   },
   created(){
-    this.$store.dispatch('loadIndividu',{self:this})
+      this.$store.dispatch('loadIndividu',{self:this})
   },
 }
 </script>
